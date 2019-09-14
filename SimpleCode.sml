@@ -1,4 +1,4 @@
-(* Ilya Kotlov 321851784 s3218517@campus.technion.ac.il *)
+(* Ilya Kotlov s3218517@campus.technion.ac.il *)
 
 fun isPalindromeAux (s,left,right) = if (left >= right) then true 
 								   else String.sub(s,left) = String.sub(s,right) 
@@ -20,3 +20,17 @@ fun nonRepeatedLetterAux (s,i) = if countLetter(s,(String.sub(s,i))) = 1 then (S
 
 fun nonRepeatedLetter s = if size(s) = 1 then (String.sub(s,0))
 						  else nonRepeatedLetterAux (s,0);
+
+fun neg y = ~y;
+
+fun int2stringAux z = if z < 10 then str(chr(ord #"0"+z)) else int2stringAux(floor(real(z)/10.0))^str(chr(ord #"0" + z mod 10));
+
+fun int2string x = if x < 0 then "-"^int2stringAux(neg(x)) else int2stringAux(x);
+
+fun ilsAux (f,s,ind) = if ind = 0 then f(String.sub(s,ind)) else f(String.sub(s,ind)) andalso ilsAux(f,s,ind-1);
+
+fun isLegalString (f,s) = if s = "" then true else ilsAux(f,s,size(s)-1);
+
+fun rvrsAux (s,ind) = if ind = 0 then str(String.sub(s,ind)) else str(String.sub(s,ind))^rvrsAux(s,ind-1);
+
+fun reverseString s = if s = "" then "" else rvrsAux(s,size(s)-1);
