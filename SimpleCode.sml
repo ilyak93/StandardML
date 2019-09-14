@@ -1,4 +1,4 @@
-(* Ilya Kotlov s3218517@campus.technion.ac.il *)
+
 
 fun isPalindromeAux (s,left,right) = if (left >= right) then true 
 								   else String.sub(s,left) = String.sub(s,right) 
